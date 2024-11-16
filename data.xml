@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products>
+    <product>
+        <name>Chanel No. 5</name>
+        <brand>Chanel</brand>
+        <price>$100</price>
+    </product>
+    <product>
+        <name>Dior Sauvage</name>
+        <brand>Dior</brand>
+        <price>$85</price>
+    </product>
+    <product>
+        <name>Gucci Bloom</name>
+        <brand>Gucci</brand>
+        <price>$75</price>
+    </product>
+    <product>
+        <name>Yves Saint Laurent Black Opium</name>
+        <brand>YSL</brand>
+        <price>$95</price>
+    </product>
+</products>
