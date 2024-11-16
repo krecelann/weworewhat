@@ -1,4 +1,4 @@
-/* Global styles */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,7 +6,7 @@ body {
     background-color: #f4f0fa;
 }
 
-header {
+header, footer {
     background-color: #800080;
     color: white;
     text-align: center;
@@ -31,16 +31,12 @@ nav a:hover {
 }
 
 footer {
-    background-color: #800080;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-/* Section styling */
+
 section {
     padding: 20px;
     margin: 20px;
@@ -49,10 +45,16 @@ section {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* List styles */
-ul {
+
+ul, #product-list {
     list-style-type: none;
     padding-left: 0;
+}
+
+#product-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
 li {
@@ -61,10 +63,23 @@ li {
     margin: 5px 0;
     border: 1px solid #d78fd8;
     border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
     text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Weather info styling */
+#product-list li {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+li:hover {
+    background-color: #d78fd8;
+    transform: scale(1.05);
+}
+
+
 #weather-info {
     padding: 20px;
     background-color: #fff;
@@ -72,62 +87,175 @@ li {
     border-radius: 10px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
-    margin: 20px auto;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* Product list styles */
-#product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+#weather-info h3 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    color: #800080;
+}
+
+#weather-info p {
+    margin: 5px 0;
+    font-size: 1.2em;
+}
+
+
+section div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
     gap: 10px;
-    padding: 0;
-    list-style-type: none;
 }
 
-#product-list li {
-    background-color: #e6a9e1;
-    border: 1px solid #d78fd8;
-    border-radius: 5px;
+#city-input, #barangay-search {
     padding: 10px;
     font-size: 16px;
+    border: 2px solid #800080;
+    border-radius: 5px;
+    outline: none;
+}
+
+#city-input:focus, #barangay-search:focus {
+    border-color: #9b4d96;
+    box-shadow: 0 0 5px rgba(155, 77, 150, 0.5);
+}
+
+#search-weather, #search-barangay {
+    padding: 12px 20px;
+    font-size: 16px;
     font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: white;
+    background-color: #800080;
+    border: 2px solid #800080;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-#product-list li:hover {
-    background-color: #d78fd8;
-    transform: scale(1.05);
+#search-weather:hover, #search-barangay:hover {
+    background-color: #9b4d96;
+    border-color: #9b4d96;
 }
 
-/* Responsive design with media queries */
+#search-weather:active, #search-barangay:active {
+    background-color: #6a006a;
+    border-color: #6a006a;
+    transform: scale(0.98);
+}
+
+
+#barangay-result {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f4f0fa;
+    border: 1px solid #d78fd8;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #800080;
+    text-align: center;
+}
+
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+}
+
+.image-box {
+    width: 45%;
+    height: auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-box:hover {
+    transform: scale(1.15);
+}
 @media (max-width: 768px) {
-    header {
-        font-size: 1.2rem;
+    /* Adjusting the product list to a single column on small screens */
+    #product-list {
+        grid-template-columns: 1fr;
     }
 
-    nav {
-        font-size: 0.9rem;
+    /* Ensuring weather info fits well on smaller screens */
+    #weather-info {
+        width: 90%;
     }
 
-    nav a {
-        padding: 8px;
-        margin: 0 5px;
+    /* Center-align the input and buttons with smaller gaps */
+    section div {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #city-input, #barangay-search {
+        width: 100%; /* Make input fields full width */
+    }
+
+    #search-weather, #search-barangay {
+        width: 100%; /* Make buttons full width */
+    }
+
+    /* Adjusting image container for small screens */
+    .image-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .image-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Further reduce padding and font sizes for very small screens */
+    body {
+        padding: 10px;
     }
 
     section {
-        margin: 10px;
         padding: 15px;
     }
 
-    #product-list {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    #weather-info h3 {
+        font-size: 1.2em;
     }
 
-    #weather-info {
-        padding: 15px;
-        font-size: 0.9rem;
+    #weather-info p {
+        font-size: 1em;
+    }
+
+    #product-list li {
+        font-size: 14px;
+        padding: 5px;
+    }
+
+    nav a {
+        padding: 5px;
+        margin: 0 10px;
+        font-size: 14px;
+    }
+
+    header, footer {
+        font-size: 14px;
+        padding: 8px 0;
     }
 }
